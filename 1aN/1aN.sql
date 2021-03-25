@@ -22,7 +22,7 @@ create table jugadores(
   idEquipo  int null,
   nombre nvarchar (30) not null,
   apellido nvarchar (30) not null,
-  edad tinyint not null,
+  fechaNacimiento datetime not null,
   posicion varchar(15) not null 
 )
 --restricciones EQUIPOS
@@ -30,10 +30,6 @@ go
 alter table equipos
 add constraint PK_ID primary key(id)
 
-go
-
-alter table equipos
-add constraint UNIQUE_name unique (nombre)
 
 go
 
@@ -57,4 +53,4 @@ alter table jugadores
 add constraint CHK_posicion check (posicion = 'arquero' or posicion = 'defensor' or posicion = 'mediocampista' or  posicion = 'delantero')
 
 alter table jugadores 
-add constraint CHK_edad check (edad >= 15)
+add constraint CHK_edad check (fechaNacimiento >getdate()) 

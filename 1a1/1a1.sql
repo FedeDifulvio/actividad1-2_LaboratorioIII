@@ -15,12 +15,12 @@ go
 
 create table peliculas (
    idPelicula int not null primary key identity (1,1),
-   nombrePelicula varchar(50) not null unique,
+   nombrePelicula varchar(50) not null,
    nombreDirector nvarchar(70) not null, 
    genero varchar(50) null, 
    clasificacion char(3) not null check (clasificacion = 'ATP' OR clasificacion = '+13' OR clasificacion = '+16' OR clasificacion = '+18'),
    duracion smallint not null check (duracion > 0),
-   estreno datetime null check (estreno < getdate())
+   estreno datetime null 
 ) 
 
 go 
